@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * sub - subtracs the second element from the top of the list by 

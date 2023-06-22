@@ -2,7 +2,7 @@
 
 div.c
 
-main.c
+monty.h
 
 pint.c
 
