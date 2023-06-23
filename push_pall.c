@@ -84,13 +84,13 @@ void pall(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
 int find_int(unsigned int line_number)
 {
 	int l, sign, count = 0;
-	char num[5];
+	char num[6];
 
 	if (look[1][0] == '-')
 		sign = 1;
 	else
 		sign = 0;
-	for (l = sign; look[1][l] != '\0'; l++)
+	for (l = sign; l <= 5; l++)
 	{
 		if (look[1][0] > 47 && look[1][0] < 58)
 			num[count] = look[1][l];
@@ -100,8 +100,9 @@ int find_int(unsigned int line_number)
 			free_rd(look);
 			exit(EXIT_FAILURE);
 		}
+		count++;
 	}
-	if (sign == 1)
+	if (sign == 1 && atoi(num) != 0)
 		return (-1 * atoi(num));
 	else
 		return (atoi(num));

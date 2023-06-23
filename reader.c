@@ -29,8 +29,12 @@ void reader_line(char **argv)
 	/*Read file*/
 	while (fgets(buffer, 256, fd) != NULL)
 	{
-		if (buffer[0] == '\n' || buffer[0] == '#')
+		if (buffer[0] == '\n' || buffer[0] == '#' ||
+				jst_spaces(buffer) == 1)
+		{
+			line++;
 			continue;
+		}
 		ld = rm_ldspace(buffer);
 		look = line_validity(ld);
 		free(ld);
@@ -44,6 +48,30 @@ void reader_line(char **argv)
 		free_rd(look);
 		line++;
 	}
+}
+
+
+/**
+ * jst_spaces - lines with just spaces
+ *
+ * @buff: buffer
+ *
+ * Return: 1 for true and 0 false
+ */
+
+int jst_spaces(char *buff)
+{
+	int i = 0 ;
+
+	while (buff[i] == ' ')
+	{
+		if (buff[i] == '\n')
+			return (1);
+		else if (buff[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (0);
 }
 /**
  * rm_ldspace - removes leading white spaces
@@ -98,7 +126,7 @@ char **line_validity(char *buf)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(buf, " ");
-	while (token != NULL || count < 3)
+	while (token != NULL || count < 2)
 	{
 		me[count] = malloc(strlen(token) + 1);
 		if (me[count] == NULL)
