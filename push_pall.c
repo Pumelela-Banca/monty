@@ -18,7 +18,6 @@ void push(stack_t **stack, unsigned int line_number)
 	if (look[1][0] == '\n' || !(look[1][0] > 47 && look[1][0] < 58)
 			|| look[1][0] != '-')
 	{
-		printf("jJJJJJ\n");
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_rd(look);
 		exit(EXIT_FAILURE);
@@ -97,6 +96,7 @@ int find_int(unsigned int line_number)
 			num[count] = look[1][l];
 		else if (!(look[1][0] > 47 && look[1][0] < 58))
 		{
+			printf("jJJJJJ\n");
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_rd(look);
 			exit(EXIT_FAILURE);
