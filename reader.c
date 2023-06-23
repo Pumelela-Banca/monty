@@ -39,6 +39,7 @@ void reader_line(char **argv)
 		{
 			if (strcmp(look[0], built[i].opcode) == 0)
 				built[i].f(&head, line);
+			i++;
 		}
 		free_rd(look);
 		line++;
