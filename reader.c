@@ -48,6 +48,7 @@ void reader_line(char **argv)
 		free_rd(look);
 		line++;
 	}
+	free_mont(head);
 }
 
 
