@@ -20,11 +20,11 @@ void swap(stack_t **stack, unsigned int line_number)
 		free_rd(look);
 		exit(EXIT_FAILURE);
 	}
-	*stack = go->next;
 	temp = temp->next;
-	temp->prev = NULL;
-	go->next = temp->next;
+	go->next = go->next->next;
+	go->next->next->prev = go;
 	go->prev = temp;
-	if (temp->next != NULL)
-		temp->next->prev = temp;
+	temp->next = go;
+	temp->next->prev = NULL;
+	*stack = temp;
 }
