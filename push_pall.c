@@ -15,8 +15,8 @@ void push(stack_t **stack, unsigned int line_number)
 	int n;
 
 
-	if (look[1][0] == '\n' || (look[1][0] < 47 && look[1][0] > 58)
-			|| look[1][0] != '-')
+	if (look[1][0] == '\n' || !((look[1][0] < 47 && look[1][0] > 58)
+			|| look[1][0] != '-'))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_rd(look);
