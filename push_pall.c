@@ -94,7 +94,7 @@ int find_int(unsigned int line_number)
 	{
 		if (look[1][0] > 47 && look[1][0] < 58)
 			num[count] = look[1][l];
-		else if (!(look[1][0] > 47 && look[1][0] < 58) && strcmp(look[0], "push") == 0)
+		else if ((look[1][0] < 47) && (look[1][0] > 58))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_rd(look);
