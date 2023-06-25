@@ -19,7 +19,7 @@ void sub(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || go->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		free_rd(look);
 		exit(EXIT_FAILURE);
 	}

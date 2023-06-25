@@ -20,16 +20,18 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_rd(look);
+		free_mont(*stack);
 		exit(EXIT_FAILURE);
 	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
+		free_mont(new);
 		free_rd(look);
 		exit(EXIT_FAILURE);
 	}
-	n = find_int(line_number);
+	n = find_int(new, line_number);
 	if (*stack == NULL)
 	{
 		new->next = NULL;
@@ -81,7 +83,7 @@ void pall(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
  * Returns: integer
  */
 
-int find_int(unsigned int line_number)
+int find_int(stack_t *stack, unsigned int line_number)
 {
 	int l, sign, count = 0;
 	char num[6];
@@ -98,6 +100,7 @@ int find_int(unsigned int line_number)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
 			free_rd(look);
+			free_mont(stack);
 			exit(EXIT_FAILURE);
 		}
 		count++;

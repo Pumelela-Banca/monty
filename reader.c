@@ -39,10 +39,15 @@ void reader_line(char **argv)
 		look = line_validity(ld);
 		free(ld);
 		i = 0;
-		while (built[i].opcode != NULL)
+		while (i < 11)
 		{
+			if (i == 10)
+				wrong_ins(head, line);
 			if (strcmp(look[0], built[i].opcode) == 0)
+			{
 				built[i].f(&head, line);
+				break;
+			}
 			i++;
 		}
 		free_rd(look);
@@ -91,7 +96,7 @@ char *rm_ldspace(char *buff)
 	ld = malloc(strlen(buff) * (sizeof(char )) + 1);
 	if (ld == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	while (buff[i] != '\n')
@@ -124,7 +129,7 @@ char **line_validity(char *buf)
 	me = malloc(3 * sizeof(char *));
 	if (me == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(buf, " ");
@@ -133,7 +138,7 @@ char **line_validity(char *buf)
 		me[count] = malloc(strlen(token) + 1);
 		if (me[count] == NULL)
 		{
-			fprintf(stderr, "Error: malloc failed");
+			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE);
 		}
 		strcpy(me[count], token);

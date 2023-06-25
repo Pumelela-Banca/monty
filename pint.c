@@ -15,8 +15,9 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty", line_number);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		free_rd(look);
+		free_mont(*stack);
 		exit(EXIT_FAILURE);
 	}
 	go = *stack;

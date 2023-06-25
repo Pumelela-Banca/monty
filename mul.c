@@ -17,8 +17,9 @@ void mul(stack_t **stack, unsigned int line_number)
 	go = temp = *stack;
 	if (*stack == NULL || go->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short", line_number);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
 		free_rd(look);
+		free_mont(go);
 		exit(EXIT_FAILURE);
 	}
 	*stack = go->next;

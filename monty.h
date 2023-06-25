@@ -45,7 +45,7 @@ void reader_line(char **argv);
 char **line_validity(char *buf);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-int find_int(unsigned int line_number);
+int find_int(stack_t *stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
@@ -56,5 +56,6 @@ void mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 int jst_spaces(char *buff);
 void free_mont(stack_t *head);
+void wrong_ins(stack_t *h, unsigned int line);
 
 #endif
