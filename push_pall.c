@@ -16,7 +16,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 
 	if (look[1][0] == '\n' || !((look[1][0] < 47 && look[1][0] > 58)
-			|| look[1][0] != '-'))
+			|| look[1][0] == '-'))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_rd(look);
@@ -88,16 +88,17 @@ void pall(stack_t **stack,
 
 int find_int(stack_t *stack, unsigned int line_number)
 {
-	int l, sign, count = 0;
+	int l, sign, count = 0, len;
 	char num[6];
 
 	if (look[1][0] == '-')
 		sign = 1;
 	else
 		sign = 0;
-	for (l = sign; l <= 5; l++)
+	len = strlen(look[1]) - sign;
+	for (l = sign; l <= len; l++)
 	{
-		if (look[1][0] > 47 && look[1][0] < 58)
+		if (look[1][l] > 47 && look[1][l] < 58)
 			num[count] = look[1][l];
 		else if (!(look[1][0] > 47 && look[1][0] < 58))
 		{
