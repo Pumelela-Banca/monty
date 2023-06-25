@@ -4,7 +4,7 @@
 /**
  * reader_line - opens file and reads the lines
  *
- * @file: file to read
+ * @argv: file to read
  *
  * Return: void
  */
@@ -115,7 +115,7 @@ char *rm_ldspace(char *buff)
 /**
  * line_validity - checks to see if line follows path
  *
- * @line: line to cheak
+ * @buf: line to cheak
  *
  * Return: start to end of command or NULL
  */

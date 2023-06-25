@@ -55,6 +55,7 @@ void push(stack_t **stack, unsigned int line_number)
  *
  * @stack: structure for list
  * @line_number: line with command
+ * @stack: structure
  *
  * Return: void
  *
@@ -79,6 +80,7 @@ void pall(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
  * find_int - converts string to integer
  *
  * @line_number: line of command
+ * @stack: structure
  *
  * Returns: integer
  */
