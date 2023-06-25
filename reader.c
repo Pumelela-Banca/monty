@@ -64,7 +64,7 @@ void reader_line(char **argv)
 
 int jst_spaces(char *buff)
 {
-	int i = 0 ;
+	int i = 0;
 
 	while (buff[i] == ' ')
 	{

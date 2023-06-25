@@ -60,7 +60,7 @@ void push(stack_t **stack, unsigned int line_number)
  *
  */
 
-void pall(stack_t **stack, 
+void pall(stack_t **stack,
 		unsigned int __attribute__((__unused__)) line_number)
 {
 	stack_t *go;

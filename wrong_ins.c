@@ -2,7 +2,7 @@
 
 /**
  * wrong_ins - prints error for wrong instruction and exits
- * 
+ *
  * @h: linked list
  * @line: line with error
  *
