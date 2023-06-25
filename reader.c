@@ -33,7 +33,7 @@ void reader_line(char **argv)
 			line++;
 			continue;
 		}
-		look = line_validity(rm_ldspace(buffer));
+		look = line_validity(&head, rm_ldspace(&head, buffer));
 		i = 0;
 		while (i < 11)
 		{
@@ -80,11 +80,12 @@ int jst_spaces(char *buff)
  * rm_ldspace - removes leading white spaces
  *
  * @buff: buffer
+ * @stack: stack
  *
  * Return: array with new string
  */
 
-char *rm_ldspace(char *buff)
+char *rm_ldspace(stack_t **stack, char *buff)
 {
 	char *ld;
 	int i = 0;
@@ -92,6 +93,8 @@ char *rm_ldspace(char *buff)
 	ld = malloc(strlen(buff) * (sizeof(char)) + 1);
 	if (ld == NULL)
 	{
+		free_rd(look);
+		free_mont(*stack);
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
@@ -112,11 +115,12 @@ char *rm_ldspace(char *buff)
  * line_validity - checks to see if line follows path
  *
  * @buf: line to cheak
+ * @stack: list
  *
  * Return: start to end of command or NULL
  */
 
-char **line_validity(char *buf)
+char **line_validity(stack_t **stack, char *buf)
 {
 	char **me;
 	char *token;
@@ -134,6 +138,10 @@ char **line_validity(char *buf)
 		me[count] = malloc(strlen(token) + 1);
 		if (me[count] == NULL)
 		{
+			free(me);
+			free(me[count]);
+			free_rd(look);
+			free_mont(*stack);
 			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE);
 		}
