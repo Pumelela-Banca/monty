@@ -12,7 +12,6 @@
 void reader_line(char **argv)
 {
 	char buffer[256];
-	char *ld;
 	int i = 1;
 	unsigned int line = 1;
 	stack_t *head = NULL;
@@ -26,7 +25,6 @@ void reader_line(char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	/*Read file*/
 	while (fgets(buffer, 256, fd) != NULL)
 	{
 		if (buffer[0] == '\n' || buffer[0] == '#' ||
@@ -35,9 +33,7 @@ void reader_line(char **argv)
 			line++;
 			continue;
 		}
-		ld = rm_ldspace(buffer);
-		look = line_validity(ld);
-		free(ld);
+		look = line_validity(rm_ldspace(buffer));
 		i = 0;
 		while (i < 11)
 		{
@@ -93,7 +89,7 @@ char *rm_ldspace(char *buff)
 	char *ld;
 	int i = 0;
 
-	ld = malloc(strlen(buff) * (sizeof(char )) + 1);
+	ld = malloc(strlen(buff) * (sizeof(char)) + 1);
 	if (ld == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -145,5 +141,6 @@ char **line_validity(char *buf)
 		token = strtok(NULL, " ");
 		count++;
 	}
+	free(buf);
 	return (me);
 }

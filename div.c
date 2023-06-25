@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _div - divides top two elements and the top is removed and the 
+ * _div - divides top two elements and the top is removed and the
  * result stored in second most element
  *
  * @stack: structure for list
@@ -12,18 +12,18 @@
 
 void _div(stack_t **stack, unsigned int line_number)
 {
-        stack_t *go, *temp;
+	stack_t *go, *temp;
 
-        go = temp = *stack;
-        if (*stack == NULL || go->next == NULL)
-        {
-                fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-                free_rd(look);
+	go = temp = *stack;
+	if (*stack == NULL || go->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		free_rd(look);
 		free_mont(go);
-                exit(EXIT_FAILURE);
-        }
-        *stack = go->next;
-        temp = temp->next;
+		exit(EXIT_FAILURE);
+	}
+	*stack = go->next;
+	temp = temp->next;
 	if (go->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
@@ -31,7 +31,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		free_mont(go);
 		exit(EXIT_FAILURE);
 	}
-        temp->n /= go->n;
-        temp->prev = NULL;
-        free(go);
+	temp->n /= go->n;
+	temp->prev = NULL;
+	free(go);
 }

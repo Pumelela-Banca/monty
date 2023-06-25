@@ -55,13 +55,13 @@ void push(stack_t **stack, unsigned int line_number)
  *
  * @stack: structure for list
  * @line_number: line with command
- * @stack: structure
  *
  * Return: void
  *
  */
 
-void pall(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
+void pall(stack_t **stack, 
+		unsigned int __attribute__((__unused__)) line_number)
 {
 	stack_t *go;
 
@@ -82,7 +82,7 @@ void pall(stack_t **stack, unsigned int __attribute__((__unused__)) line_number)
  * @line_number: line of command
  * @stack: structure
  *
- * Returns: integer
+ * Return: integer
  */
 
 int find_int(stack_t *stack, unsigned int line_number)

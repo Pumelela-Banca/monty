@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * sub - subtracs the second element from the top of the list by 
- * the top element. The result is stored in the second 
+ * sub - subtracs the second element from the top of the list by
+ * the top element. The result is stored in the second
  * element from the top and the top element is removed
  *
  * @stack: structure for list

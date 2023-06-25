@@ -9,7 +9,7 @@
  * Return: Void
  */
 
-void nop(stack_t __attribute__((__unused__)) 
+void nop(stack_t __attribute__((__unused__))
 		**stack, unsigned int __attribute__((__unused__)) line_number)
 {
 }
