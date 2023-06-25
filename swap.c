@@ -21,10 +21,17 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = temp->next;
-	go->next = temp->next;
-	temp->next->prev = go;
+	if (temp->next != NULL)
+	{
+		temp->next->prev = go;
+		go->next = temp->next;
+	}
+	else
+	{
+		go->next = NULL;
+		temp->next = go;
+	}
 	go->prev = temp;
-	temp->next = go;
-	temp->next->prev = NULL;
+	temp->prev = NULL;
 	*stack = temp;
 }
