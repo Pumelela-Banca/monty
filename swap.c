@@ -21,8 +21,8 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = temp->next;
-	go->next = go->next->next;
-	go->next->next->prev = go;
+	go->next = temp->next;
+	temp->next->prev = go;
 	go->prev = temp;
 	temp->next = go;
 	temp->next->prev = NULL;
