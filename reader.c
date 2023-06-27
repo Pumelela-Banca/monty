@@ -74,6 +74,7 @@ int jst_spaces(char *buff)
 			return (0);
 		i++;
 	}
+	
 	return (0);
 }
 /**
@@ -149,6 +150,5 @@ char **line_validity(stack_t **stack, char *buf)
 		token = strtok(NULL, " ");
 		count++;
 	}
-	free(buf);
 	return (me);
 }
